@@ -1,6 +1,8 @@
+from email.mime import base
 from openai import OpenAI
 import google.generativeai as genai
 import json
+import os
 from stqdm import stqdm
 
 SYSTEM_PROMPT = "You are a smart assistant to career advisors at the Harvard Extension School. You will reply with JSON only."
@@ -172,7 +174,16 @@ def generate_json_resume(cv_text, api_key, model="gpt-4o", model_type="OpenAI"):
     """Generate a JSON resume from a CV text"""
     sections = []
     if model_type == "OpenAI":
-        client = OpenAI(api_key=api_key)
+        timeout = int(os.getenv("OPENAI_TIMEOUT", "60"))
+        max_retries = int(os.getenv("OPENAI_MAX_RETRIES", "2"))
+        base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+        
+        client = OpenAI(
+            base_url=base_url,
+            api_key=api_key,
+            timeout=timeout,
+            max_retries=max_retries
+        )
     elif model_type == "Gemini":
         genai.configure(api_key=api_key)
         model = genai.GenerativeModel(model)
