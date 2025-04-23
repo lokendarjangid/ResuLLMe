@@ -44,7 +44,7 @@ def get_llm_model_and_api(model_type):
 
 
 if __name__ == '__main__':
-    IFRAME = '<iframe src="https://ghbtns.com/github-btn.html?user=IvanIsCoding&repo=ResuLLMe&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>'
+    IFRAME = '<iframe src="https://ghbtns.com/github-btn.html?user=lokendarjangid&repo=ResuLLMe&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>'
 
     st.set_page_config(
         page_title="ResuLLMe",
