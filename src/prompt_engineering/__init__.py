@@ -176,7 +176,7 @@ def generate_json_resume(cv_text, api_key, model="gpt-4o", model_type="OpenAI"):
     if model_type == "OpenAI":
         timeout = int(os.getenv("OPENAI_TIMEOUT", "60"))
         max_retries = int(os.getenv("OPENAI_MAX_RETRIES", "2"))
-        base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+        base_url = os.getenv("OPENAI_BASE_URL", "https://models.inference.ai.azure.com")
         
         client = OpenAI(
             base_url=base_url,
